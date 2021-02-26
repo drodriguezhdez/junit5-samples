@@ -22,7 +22,7 @@ dependencies {
     val junit4Version = "4.13.2"
     val junitBomVersion = "5.7.1"
 
-    ddTracerAgent "com.datadoghq:dd-java-agent:0.74.0"
+    ddTracerAgent("com.datadoghq:dd-java-agent:0.74.0")
 
     // Use junit-bom to align versions
     // https://docs.gradle.org/current/userguide/managing_transitive_dependencies.html#sec:bom_import
