@@ -14,10 +14,10 @@ pipeline {
     }
 
     stages {
-        stage("junit5-migration-gradle") {
+        stage("junit5-migration-maven") {
             steps {
-              dir("junit5-migration-gradle") {
-                sh "./gradlew test"
+              dir("junit5-migration-maven") {
+                sh "./mvnw test -Pci-app"
               }
             }
         }

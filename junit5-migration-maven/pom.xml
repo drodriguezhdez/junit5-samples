@@ -51,21 +51,35 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>ci-app</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<dd.java.agent.arg>-javaagent:${settings.localRepository}/com/datadoghq/dd-java-agent/0.74.0/dd-java-agent-0.74.0.jar</dd.java.agent.arg>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.datadoghq</groupId>
+					<artifactId>dd-java-agent</artifactId>
+					<version>0.74.0</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 				<configuration>
-					<!--<groups>fast</groups>-->
-					<excludedGroups>slow</excludedGroups>
-					<properties>
-						<!--
-						<configurationParameters>
-							junit.jupiter.conditions.deactivate = *
-						</configurationParameters>
-						-->
-					</properties>
+					<argLine>${dd.java.agent.arg}</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
