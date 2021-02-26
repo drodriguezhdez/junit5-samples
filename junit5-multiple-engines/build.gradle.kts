@@ -11,11 +11,11 @@ configurations {
 
 repositories {
     mavenCentral()
-    jcenter {
+    /*jcenter {
         content {
             includeGroup("org.spekframework.spek2")
         }
-    }
+    }*/
 }
 
 dependencies {
