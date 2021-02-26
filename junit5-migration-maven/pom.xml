@@ -58,18 +58,18 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 
-			<properties>
+<!--			<properties>
 				<dd.java.agent.arg>-javaagent:${settings.localRepository}/com/datadoghq/dd-java-agent/0.74.0/dd-java-agent-0.74.0.jar</dd.java.agent.arg>
-			</properties>
+			</properties>-->
 
-			<dependencies>
+			<!--<dependencies>
 				<dependency>
 					<groupId>com.datadoghq</groupId>
 					<artifactId>dd-java-agent</artifactId>
 					<version>0.74.0</version>
 					<scope>provided</scope>
 				</dependency>
-			</dependencies>
+			</dependencies>-->
 		</profile>
 	</profiles>
 
