@@ -4,6 +4,10 @@ plugins {
 	id 'idea' // optional (to generate IntelliJ IDEA project files)
 }
 
+configurations {
+	ddTracerAgent
+}
+
 repositories {
 	mavenCentral()
 }
@@ -17,6 +21,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
+	ddTracerAgent "com.datadoghq:dd-java-agent:0.74.0"
 	api(platform("org.junit:junit-bom:5.7.1"))
 	api("org.junit.jupiter:junit-jupiter-api") {
         because 'building extensions in "main" using JUnit Jupiter API'
@@ -28,4 +33,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+	jvmArgs = ["-javaagent:${configurations.ddTracerAgent.asPath}"]
 }
