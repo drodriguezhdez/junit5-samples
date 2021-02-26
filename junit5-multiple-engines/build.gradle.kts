@@ -5,6 +5,10 @@ plugins {
     kotlin("jvm") version "1.3.50"
 }
 
+configurations {
+    ddTracerAgent
+}
+
 repositories {
     mavenCentral()
     jcenter {
@@ -17,6 +21,8 @@ repositories {
 dependencies {
     val junit4Version = "4.13.2"
     val junitBomVersion = "5.7.1"
+
+    ddTracerAgent "com.datadoghq:dd-java-agent:0.74.0"
 
     // Use junit-bom to align versions
     // https://docs.gradle.org/current/userguide/managing_transitive_dependencies.html#sec:bom_import
@@ -88,6 +94,7 @@ tasks {
     }
 
     test {
+        jvmArgs = ["-javaagent:${configurations.ddTracerAgent.asPath}"]
         // useJUnitPlatform() ... https://github.com/gradle/gradle/issues/4912
         dependsOn(consoleLauncherTest)
         exclude("**/*")
