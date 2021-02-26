@@ -14,9 +14,9 @@ pipeline {
     }
 
     stages {
-        stage("junit5-jupiter-extensions") {
+        stage("junit5-migration-gradle") {
             steps {
-              dir("junit5-jupiter-extensions") {
+              dir("junit5-migration-gradle") {
                 sh "./gradlew test"
               }
             }
