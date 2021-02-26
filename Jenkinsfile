@@ -16,7 +16,9 @@ pipeline {
     stages {
         stage("junit5-jupiter-extensions") {
             steps {
-                sh "cd junit5-jupiter-extensions && ./gradlew test'"
+              dir("junit5-jupiter-extensions") {
+                sh "./gradlew test'"
+              }
             }
         }
     }
